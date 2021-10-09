@@ -15,7 +15,7 @@ public class MainActivity extends Activity {
   }
 
   public void scan(View view) {
-    Intent i = new Intent(this, CaptureActivity.class);
+    Intent i = new Intent(this, CaptureActivity.class) ;
     startActivity(i);
   }
 }

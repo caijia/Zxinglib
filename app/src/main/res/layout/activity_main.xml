@@ -8,7 +8,7 @@
     >
 
   <Button
-      android:text="scan"
+      android:text="scan1"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:onClick="scan">

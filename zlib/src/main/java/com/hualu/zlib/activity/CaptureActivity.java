@@ -18,6 +18,7 @@ package com.hualu.zlib.activity;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.view.View;
 import com.hualu.zlib.R;
 import com.hualu.zlib.camera.CameraManager;
 import com.hualu.zlib.decode.DecodeThread;
@@ -90,7 +91,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
 		Window window = getWindow();
 		window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-		setContentView(R.layout.activity_capture);
+		setContentView(R.layout.activity_capture1);
 
 		scanPreview = (SurfaceView) findViewById(R.id.capture_preview);
 		scanContainer = (RelativeLayout) findViewById(R.id.capture_container);
@@ -206,8 +207,14 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 		bundle.putInt("height", mCropRect.height());
 		bundle.putString("result", rawResult.getText());
 
-		startActivity(new Intent(CaptureActivity.this, ResultActivity.class).putExtras(bundle));
+		//startActivity(new Intent(CaptureActivity.this, ResultActivity.class).putExtras(bundle));
+		Intent i = new Intent();
+		i.putExtra(SCAN_RESULT, rawResult.getText());
+		setResult(Activity.RESULT_OK, i);
+		onBackPressed();
 	}
+
+	public static final String SCAN_RESULT = "scan_result";
 
 	private void initCamera(SurfaceHolder surfaceHolder) {
 		if (surfaceHolder == null) {
@@ -374,5 +381,9 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 			}
 		}
 		return allow;
+	}
+
+	public void closeActivity(View view) {
+		onBackPressed();
 	}
 }

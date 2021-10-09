@@ -1,0 +1,3 @@
+rootProject.name = "Zxinglib"
+include ':app'
+include ':zlib'

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hualu.zlib">
+  xmlns:tools="http://schemas.android.com/tools"
+  package="com.hualu.zlib">
 
   <uses-permission android:name="android.permission.CAMERA" />
   <uses-permission android:name="android.permission.FLASHLIGHT" />
@@ -27,10 +28,6 @@
   <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
   <application>
-
-    <meta-data
-      android:name="com.baidu.lbsapi.API_KEY"
-      android:value="ROutTEGMi69fpklSnrwZopCnownuDmpE"></meta-data>
 
     <service
       android:name="com.baidu.location.f"

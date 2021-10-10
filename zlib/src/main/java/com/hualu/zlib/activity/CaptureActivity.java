@@ -175,7 +175,11 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 			isHasSurface = true;
 			this.surfaceHolder = holder;
 			//initCamera(holder);
-			requestPermissions(CAMERA_WRITE_PERMISSIONS, REQ_CAMERA, () -> initCamera(holder));
+			requestPermissions(CAMERA_WRITE_PERMISSIONS, REQ_CAMERA, new Runnable() {
+				@Override public void run() {
+					CaptureActivity.this.initCamera(holder);
+				}
+			});
 		}
 	}
 

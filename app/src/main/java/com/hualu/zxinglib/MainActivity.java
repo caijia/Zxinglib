@@ -60,7 +60,7 @@ public class MainActivity extends Activity {
       case REQUEST_LOCATION: {
         boolean grantedCameraPermission = isGrantedCameraPermission(grantResults);
         if (grantedCameraPermission) {
-          BdLocationManager.newInstance().getOnceLocation(getApplication(),
+          BdLocationManager.newInstance().getOnceLocation(getApplication(), "GCJ02",
               (latitude, longitude) -> {
                 Log.e("hh", latitude + "");
                 Log.e("hh", longitude + "");

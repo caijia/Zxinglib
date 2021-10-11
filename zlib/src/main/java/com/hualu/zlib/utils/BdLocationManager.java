@@ -26,7 +26,7 @@ public class BdLocationManager {
 
   public LocationClient mLocationClient = null;
 
-  public void getOnceLocation(Application application, BdLocationListener listener) {
+  public void getOnceLocation(Application application, String type, BdLocationListener listener) {
     mLocationClient = new LocationClient(application);
     mLocationClient.registerLocationListener(new BDAbstractLocationListener() {
       @Override public void onReceiveLocation(BDLocation bdLocation) {
@@ -54,7 +54,7 @@ public class BdLocationManager {
     //BD09ll：百度经纬度坐标；
     //BD09：百度墨卡托坐标；
     //海外地区定位，无需设置坐标类型，统一返回WGS84类型坐标
-    option.setCoorType("bd09ll");
+    option.setCoorType(type);
     option.setOnceLocation(true);
     option.setEnableSimulateGps(false);
     mLocationClient.setLocOption(option);

@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import com.hualu.zlib.activity.CaptureActivity;
+import com.hualu.zlib.activity.SignResultActivity;
 import com.hualu.zlib.utils.BdLocationManager;
 
 public class MainActivity extends Activity {
@@ -25,9 +26,11 @@ public class MainActivity extends Activity {
   }
 
   public void scan(View view) {
-    //Intent i = new Intent(this, CaptureActivity.class);
-    //startActivityForResult(i, 200);
-    requestLocationPermissions();
+    Intent i =  SignResultActivity.getIntent(this, "虎门大桥", false,
+        "张宪兵", "2012-01-09", "京珠北",
+        "2012-01-08", "江东升");
+    startActivity(i);
+    //requestLocationPermissions();
   }
 
   @Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {

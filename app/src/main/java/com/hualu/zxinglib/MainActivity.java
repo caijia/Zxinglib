@@ -28,7 +28,7 @@ public class MainActivity extends Activity {
   public void scan(View view) {
     Intent i =  SignResultActivity.getIntent(this, "虎门大桥", false,
         "张宪兵", "2012-01-09", "京珠北",
-        "2012-01-08", "江东升");
+        "2012-01-08", "江东升", "签到消息");
     startActivity(i);
     //requestLocationPermissions();
   }

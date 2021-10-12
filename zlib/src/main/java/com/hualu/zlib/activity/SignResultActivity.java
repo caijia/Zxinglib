@@ -33,10 +33,11 @@ public class SignResultActivity extends Activity {
 	private static final String SIGN_COMPANY = "sign_company";
 	private static final String PRE_SIGN_TIME = "pre_sign_time";
 	private static final String PRE_SIGN_PERSON = "pre_sign_person";
+	private static final String SIGN_MESSAGE = "sign_message";
 
 	public static Intent getIntent(Activity activity, String structName, boolean isSuccessful,
 			String signPerson, String signTime, String signCompany, String preSignTime,
-			String preSignPerson) {
+			String preSignPerson, String signMessage) {
 		Intent i = new Intent(activity, SignResultActivity.class);
 		i.putExtra(STRUCT_NAME, structName);
 		i.putExtra(IS_SUCCESSFUL, isSuccessful);
@@ -45,6 +46,7 @@ public class SignResultActivity extends Activity {
 		i.putExtra(SIGN_COMPANY, signCompany);
 		i.putExtra(PRE_SIGN_TIME, preSignTime);
 		i.putExtra(PRE_SIGN_PERSON, preSignPerson);
+		i.putExtra(SIGN_MESSAGE, signMessage);
 		return i;
 	}
 
@@ -79,6 +81,7 @@ public class SignResultActivity extends Activity {
 			String signCompany = extras.getString(SIGN_COMPANY);
 			String preSignTime = extras.getString(PRE_SIGN_TIME);
 			String preSignPerson = extras.getString(PRE_SIGN_PERSON);
+			String signMessage = extras.getString(SIGN_MESSAGE);
 
 			tvStructName.setText(orEmpty(structName));
 			tvSignPerson.setText(orEmpty(signPerson));
@@ -87,11 +90,10 @@ public class SignResultActivity extends Activity {
 			tvPreSignTime.setText(orEmpty(preSignTime));
 			tvPreSignPerson.setText(orEmpty(preSignPerson));
 
+			tvStatusMessage.setText(orEmpty(signMessage));
 			if (isSuccessful) {
-				tvStatusMessage.setText("签到成功");
 				ivStatusImage.setImageResource(R.drawable.sign_ok);
 			} else {
-				tvStatusMessage.setText("签到失败");
 				ivStatusImage.setImageResource(R.drawable.sign_error);
 			}
 		}

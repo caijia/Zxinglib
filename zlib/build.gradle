@@ -22,5 +22,5 @@ android {
 
 dependencies {
   implementation files('libs/zxing.jar')
-  implementation 'com.baidu.lbsyun:BaiduMapSDK_Location:9.1.8'
+  implementation 'com.amap.api:location:5.5.1'
 }

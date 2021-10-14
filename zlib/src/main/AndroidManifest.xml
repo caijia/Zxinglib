@@ -27,15 +27,16 @@
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
   <!-- 访问网络，网络定位需要上网-->
   <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+  <!--用于申请调用A-GPS模块-->
+  <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"></uses-permission>
 
   <application
     android:networkSecurityConfig="@xml/network_security_config"
     android:usesCleartextTraffic="true">
 
-    <service
-      android:name="com.baidu.location.f"
-      android:enabled="true"
-      android:process=":remote"></service>
+<!--    3e8144c6a77f7903f9dedef8cdba136b-->
+
+    <service android:name="com.amap.api.location.APSService"></service>
 
     <activity
         android:name="com.hualu.zlib.activity.CaptureActivity"

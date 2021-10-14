@@ -26,11 +26,11 @@ public class MainActivity extends Activity {
   }
 
   public void scan(View view) {
-    Intent i =  SignResultActivity.getIntent(this, "虎门大桥", false,
-        "张宪兵", "2012-01-09", "京珠北",
-        "2012-01-08", "江东升", "签到消息");
-    startActivity(i);
-    //requestLocationPermissions();
+    //Intent i =  SignResultActivity.getIntent(this, "虎门大桥", false,
+    //    "张宪兵", "2012-01-09", "京珠北",
+    //    "2012-01-08", "江东升", "签到消息");
+    //startActivity(i);
+    requestLocationPermissions();
   }
 
   @Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -50,6 +50,7 @@ public class MainActivity extends Activity {
           Manifest.permission.CHANGE_WIFI_STATE,
           Manifest.permission.READ_PHONE_STATE,
           Manifest.permission.WRITE_EXTERNAL_STORAGE,
+          Manifest.permission.ACCESS_LOCATION_EXTRA_COMMANDS
       }, REQUEST_LOCATION);
     }
   }
@@ -60,7 +61,7 @@ public class MainActivity extends Activity {
       case REQUEST_LOCATION: {
         boolean grantedCameraPermission = isGrantedCameraPermission(grantResults);
         if (grantedCameraPermission) {
-          BdLocationManager.newInstance().getOnceLocation(getApplication(), "GCJ02",
+          BdLocationManager.newInstance().getOnceLocation(getApplication(), "WGS84",
               (latitude, longitude) -> {
                 Log.e("hh", latitude + "");
                 Log.e("hh", longitude + "");

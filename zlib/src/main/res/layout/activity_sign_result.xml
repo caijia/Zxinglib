@@ -167,6 +167,19 @@
         android:textColor="#2c2c2c"
         tools:text="江东升" />
     </RelativeLayout>
+
   </LinearLayout>
+
+  <TextView
+    android:id="@+id/tv_add"
+    android:layout_width="match_parent"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:text="新增经常检查单"
+    android:textSize="16dp"
+    android:textColor="@color/white"
+    android:gravity="center"
+    android:background="@drawable/selector_1afa29_r2"
+    android:layout_height="48dp" />
 
 </LinearLayout>

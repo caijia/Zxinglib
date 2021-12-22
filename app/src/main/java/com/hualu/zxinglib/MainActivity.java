@@ -26,17 +26,19 @@ public class MainActivity extends Activity {
   }
 
   public void scan(View view) {
-    //Intent i =  SignResultActivity.getIntent(this, "虎门大桥", false,
-    //    "张宪兵", "2012-01-09", "京珠北",
-    //    "2012-01-08", "江东升", "签到消息");
-    //startActivity(i);
-    requestLocationPermissions();
+    Intent i =  SignResultActivity.getIntent(this, "大埠河大桥(K289+678)", true,
+            "何炜俊", "2021-12-17", "广东冠粤路桥有限公司",
+        "2021-12-02", "何炜俊", "签到成功");
+    startActivityForResult(i, 2);
+    //requestLocationPermissions();
   }
 
   @Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
     if (requestCode == 200) {
       tvResult.setText(data.getStringExtra(CaptureActivity.SCAN_RESULT));
+    } else if (requestCode == 2) {
+      tvResult.setText("新增检查单");
     }
   }
 

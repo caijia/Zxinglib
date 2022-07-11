@@ -32,12 +32,14 @@ public class DiseaseListActivity extends Activity {
   private static final String EXTRA_DISEASE_URL = "extra:DiseaseUrl";
   private static final String EXTRA_STRUCT_ID = "extra:structId";
   private static final String EXTRA_USER_CODE = "extra:userCode";
+  private static final String EXTRA_STRUCT_TYPE = "extra:structType";
 
-  public static Intent getIntent(Context context, String url, String structId, String userCode) {
+  public static Intent getIntent(Context context, String url, String structId, String userCode, String structType) {
     Intent i = new Intent(context, DiseaseListActivity.class);
     i.putExtra(EXTRA_DISEASE_URL, url);
     i.putExtra(EXTRA_STRUCT_ID, structId);
     i.putExtra(EXTRA_USER_CODE, userCode);
+    i.putExtra(EXTRA_STRUCT_TYPE, structType);
     return i;
   }
 
@@ -46,12 +48,15 @@ public class DiseaseListActivity extends Activity {
 
   private String userCode;
 
+  private String structType;
+
   private void handleIntent() {
     Intent intent = getIntent();
     if (intent != null && intent.getExtras() != null) {
       url = intent.getExtras().getString(EXTRA_DISEASE_URL);
       structId = intent.getExtras().getString(EXTRA_STRUCT_ID);
       userCode = intent.getExtras().getString(EXTRA_USER_CODE);
+      structType = intent.getExtras().getString(EXTRA_STRUCT_TYPE);
     }
   }
 
@@ -162,6 +167,7 @@ public class DiseaseListActivity extends Activity {
     params.put("userCode", userCode == null ? "" : userCode);
     params.put("pageNo", page);
     params.put("pageSize", 15);
+    params.put("cat", structType);
     if (!TextUtils.isEmpty(startDate)) {
       params.put("findDate_S", startDate);
     }

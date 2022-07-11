@@ -22,9 +22,13 @@ public class DiseaseDelegate extends ItemViewDelegate<Disease, DiseaseDelegate.I
   @Override
   public void onBindViewHolder(List<?> list, Disease item, RecyclerView.Adapter adapter,
       InnerViewHolder holder, int i) {
-    holder.tvName.setText(item.getDssTypeName() + "  " + item.getLineDirect() + "  " + item.getStake());
-    holder.tvCenterStake.setText(item.getDssCount() + (item.getDssUnit() == null ? "" : item.getDssUnit()) + "   " + item.getFindDate());
+    holder.tvName.setText(orEmpty(item.getDssTypeName()) + "  " + orEmpty(item.getLineDirect()) + "  " + orEmpty(item.getStake()));
+    holder.tvCenterStake.setText(orEmpty(item.getDssCount()) + orEmpty(item.getDssUnit()) + "   " + orEmpty(item.getFindDate()));
     holder.setItem(item);
+  }
+
+  private String orEmpty(String s) {
+    return s == null ? "" : s;
   }
 
   @Override public boolean isForViewType(@NonNull Object o) {

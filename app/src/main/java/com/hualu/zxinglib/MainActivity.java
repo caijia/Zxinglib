@@ -27,20 +27,22 @@ public class MainActivity extends Activity {
   }
 
   public void scan(View view) {
-    Intent i =  SignResultActivity.getIntent(this, "大埠河大桥(K289+678)", true,
-            "何炜俊", "2021-12-17", "广东冠粤路桥有限公司",
-        "2021-12-02", "何炜俊", "签到成功");
-    startActivityForResult(i, 2);
+    //Intent i =  SignResultActivity.getIntent(this, "大埠河大桥(K289+678)", true,
+    //        "何炜俊", "2021-12-17", "广东冠粤路桥有限公司",
+    //    "2021-12-02", "何炜俊", "签到成功");
+    //startActivityForResult(i, 2);
     //requestLocationPermissions();
+
+    Intent i = DiseaseListActivity.getIntent(
+        this,
+        "http://192.168.3.3:8085/qrcode/app/struct/getDssInfo",
+        "C415EE40-AD0A-4BC0-B702-22E65CDFBD37",
+        "ny-admin","QL"
+    );
+    startActivity(i);
   }
 
-  //Intent i = DiseaseListActivity.getIntent(
-  //    this,
-  //    "http://192.168.3.3:8085/qrcode/app/struct/getDssInfo",
-  //    "C415EE40-AD0A-4BC0-B702-22E65CDFBD37",
-  //    "ny-admin"
-  //);
-  //startActivity(i);
+
 
   @Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);

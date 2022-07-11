@@ -39,8 +39,8 @@ afterEvaluate {
       release(MavenPublication) {
         from components.release
         groupId = 'com.github.caijia'
-        artifactId = 'Zxinglib'
-        version = '0.23'
+        artifactId = 'zxinglib'
+        version = '0.232'
       }
     }
   }

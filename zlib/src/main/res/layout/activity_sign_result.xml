@@ -116,7 +116,7 @@
       <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="养护单位"
+        android:text="巡查单位"
         android:textColor="#2c2c2c" />
 
       <TextView
@@ -176,6 +176,19 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     android:text="新增经常检查单"
+    android:textSize="16dp"
+    android:textColor="@color/white"
+    android:gravity="center"
+    android:background="@drawable/selector_1afa29_r2"
+    android:layout_height="48dp" />
+
+  <TextView
+    android:id="@+id/tv_disease_his"
+    android:layout_width="match_parent"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginTop="16dp"
+    android:text="结构物养护历史"
     android:textSize="16dp"
     android:textColor="@color/white"
     android:gravity="center"

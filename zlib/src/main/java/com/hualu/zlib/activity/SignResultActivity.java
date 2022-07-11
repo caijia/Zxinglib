@@ -26,8 +26,10 @@ public class SignResultActivity extends Activity {
 	private TextView tvPreSignTime;
 	private TextView tvPreSignPerson;
 	private TextView tvAdd;
+	private TextView tvDiseaseHis;
 
 	public static final String ADD_CHECKER_LIST = "add_checker_list";
+	public static final String GOTO_DISEASE_LIST = "goto_disease_list";
 	public static final String EVENT_TYPE = "event_type";
 	private static final String STRUCT_NAME = "struct_name";
 	private static final String IS_SUCCESSFUL = "is_successful";
@@ -70,6 +72,7 @@ public class SignResultActivity extends Activity {
 		tvPreSignTime = (TextView) findViewById(R.id.tv_pre_sign_time);
 		tvPreSignPerson = (TextView) findViewById(R.id.tv_pre_sign_person);
 		tvAdd = (TextView) findViewById(R.id.tv_add);
+		tvDiseaseHis = (TextView) findViewById(R.id.tv_disease_his);
 
 		tvBack.setOnClickListener(new View.OnClickListener() {
 			@Override public void onClick(View v) {
@@ -81,6 +84,15 @@ public class SignResultActivity extends Activity {
 			@Override public void onClick(View v) {
 				Intent i = new Intent();
 				i.putExtra(EVENT_TYPE, ADD_CHECKER_LIST);
+				setResult(RESULT_OK, i);
+				onBackPressed();
+			}
+		});
+
+		tvDiseaseHis.setOnClickListener(new View.OnClickListener() {
+			@Override public void onClick(View v) {
+				Intent i = new Intent();
+				i.putExtra(EVENT_TYPE, GOTO_DISEASE_LIST);
 				setResult(RESULT_OK, i);
 				onBackPressed();
 			}

@@ -49,6 +49,11 @@
         android:screenOrientation="portrait"
         android:theme="@android:style/Theme.Black.NoTitleBar" />
 
+    <activity
+      android:name="com.hualu.zlib.activity.DiseaseListActivity"
+      android:screenOrientation="portrait"
+      android:theme="@android:style/Theme.Light.NoTitleBar" />
+
     <activity android:name=".activity.SignResultActivity"
       android:theme="@android:style/Theme.Light.NoTitleBar"/>
   </application>

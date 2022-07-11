@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import com.hualu.zlib.activity.CaptureActivity;
+import com.hualu.zlib.activity.DiseaseListActivity;
 import com.hualu.zlib.activity.SignResultActivity;
 import com.hualu.zlib.utils.BdLocationManager;
 
@@ -33,12 +34,26 @@ public class MainActivity extends Activity {
     //requestLocationPermissions();
   }
 
+  //Intent i = DiseaseListActivity.getIntent(
+  //    this,
+  //    "http://192.168.3.3:8085/qrcode/app/struct/getDssInfo",
+  //    "C415EE40-AD0A-4BC0-B702-22E65CDFBD37",
+  //    "ny-admin"
+  //);
+  //startActivity(i);
+
   @Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
-    if (requestCode == 200) {
-      tvResult.setText(data.getStringExtra(CaptureActivity.SCAN_RESULT));
-    } else if (requestCode == 2) {
-      tvResult.setText("新增检查单");
+    if (resultCode != Activity.RESULT_OK || data == null || data.getExtras() == null) {
+      return;
+    }
+
+    Bundle extras = data.getExtras();
+    String eventType = extras.getString(SignResultActivity.EVENT_TYPE);
+    if (SignResultActivity.ADD_CHECKER_LIST.equals(eventType)) {
+
+    } else if (SignResultActivity.GOTO_DISEASE_LIST.equals(eventType)) {
+
     }
   }
 

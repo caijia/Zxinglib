@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
 android {
   compileSdkVersion 28
 
@@ -29,4 +30,18 @@ dependencies {
   implementation "com.squareup.retrofit2:retrofit:2.9.0"
   implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
+}
+
+afterEvaluate {
+  publishing {
+    publications {
+      // Creates a Maven publication called "release".
+      release(MavenPublication) {
+        from components.release
+        groupId = 'com.github.caijia'
+        artifactId = 'Zxinglib'
+        version = '0.23'
+      }
+    }
+  }
 }

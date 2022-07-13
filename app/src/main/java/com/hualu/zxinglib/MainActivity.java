@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import com.hualu.zlib.activity.CaptureActivity;
 import com.hualu.zlib.activity.DiseaseListActivity;
 import com.hualu.zlib.activity.SignResultActivity;
 import com.hualu.zlib.utils.BdLocationManager;
@@ -24,6 +23,7 @@ public class MainActivity extends Activity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     tvResult = findViewById(R.id.tvResult);
+
   }
 
   public void scan(View view) {

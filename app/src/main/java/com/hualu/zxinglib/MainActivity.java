@@ -35,7 +35,7 @@ public class MainActivity extends Activity {
 
     Intent i = DiseaseListActivity.getIntent(
         this,
-        "http://192.168.3.3:8085/qrcode/app/struct/getDssInfo",
+        "https://125.89.150.12:7001/qrcode/app/struct/getDssInfo",
         "C415EE40-AD0A-4BC0-B702-22E65CDFBD37",
         "ny-admin","QL"
     );

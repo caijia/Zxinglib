@@ -38,6 +38,16 @@
 
     <service android:name="com.amap.api.location.APSService"></service>
 
+    <provider
+      android:name="com.hualu.zlib.provider.CameraFileProvider"
+      android:authorities="com.caijia.scancamera.provider"
+      android:exported="false"
+      android:grantUriPermissions="true">
+      <meta-data
+        android:name="android.support.FILE_PROVIDER_PATHS"
+        android:resource="@xml/provider_paths"/>
+    </provider>
+
     <activity
         android:name="com.hualu.zlib.activity.CaptureActivity"
         android:screenOrientation="portrait"

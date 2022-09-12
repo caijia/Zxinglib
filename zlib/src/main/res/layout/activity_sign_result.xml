@@ -37,162 +37,198 @@
     android:layout_height="1dp"
     android:background="#eeeeee" />
 
-  <LinearLayout
+  <ScrollView
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="20dp"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <ImageView
-      android:id="@+id/iv_sign_status_image"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:src="@drawable/sign_ok" />
-
-    <TextView
-      android:id="@+id/tv_sign_status_message"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="8dp"
-      android:textColor="#2c2c2c"
-      android:textSize="18dp"
-      tools:text="快速签到成功" />
-
-  </LinearLayout>
-
-  <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="16dp"
-    android:background="#efefef"
-    android:orientation="vertical">
-
-    <RelativeLayout
+    <LinearLayout
+      android:orientation="vertical"
+      android:paddingBottom="24dp"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:padding="12dp">
+      android:layout_height="wrap_content">
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+          android:id="@+id/iv_sign_status_image"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:src="@drawable/sign_ok" />
+
+        <TextView
+          android:id="@+id/tv_sign_status_message"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="8dp"
+          android:textColor="#2c2c2c"
+          android:textSize="18dp"
+          tools:text="快速签到成功" />
+
+      </LinearLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="#efefef"
+        android:orientation="vertical">
+
+        <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="12dp">
+
+          <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="巡查人"
+            android:textColor="#2c2c2c" />
+
+          <TextView
+            android:id="@+id/tv_sign_person"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textColor="#2c2c2c"
+            tools:text="张馅饼" />
+        </RelativeLayout>
+
+        <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="12dp">
+
+          <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="签到时间"
+            android:textColor="#2c2c2c" />
+
+          <TextView
+            android:id="@+id/tv_sign_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textColor="#2c2c2c"
+            tools:text="2012-01-12" />
+        </RelativeLayout>
+
+        <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="12dp">
+
+          <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="巡查单位"
+            android:textColor="#2c2c2c" />
+
+          <TextView
+            android:id="@+id/tv_sign_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textColor="#2c2c2c"
+            tools:text="京珠北" />
+        </RelativeLayout>
+
+        <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="12dp">
+
+          <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="上次签到时间"
+            android:textColor="#2c2c2c" />
+
+          <TextView
+            android:id="@+id/tv_pre_sign_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textColor="#2c2c2c"
+            tools:text="2012-01-02" />
+        </RelativeLayout>
+
+        <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="12dp">
+
+          <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="上次签到人员"
+            android:textColor="#2c2c2c" />
+
+          <TextView
+            android:id="@+id/tv_pre_sign_person"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textColor="#2c2c2c"
+            tools:text="江东升" />
+        </RelativeLayout>
+
+      </LinearLayout>
 
       <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="巡查人"
+        android:text="现场照片"
+        android:layout_marginLeft="16dp"
         android:textColor="#2c2c2c" />
 
-      <TextView
-        android:id="@+id/tv_sign_person"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:textColor="#2c2c2c"
-        tools:text="张馅饼" />
-    </RelativeLayout>
-
-    <RelativeLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:padding="12dp">
-
-      <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="签到时间"
-        android:textColor="#2c2c2c" />
+      <FrameLayout
+        android:id="@+id/fl_camera"
+        android:background="@drawable/selector_transparent_gray"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="16dp"
+        android:padding="1dp"
+        android:layout_width="140dp"
+        android:layout_height="140dp" >
+        <ImageView
+          android:id="@+id/iv_camara"
+          android:background="@drawable/shape_scan_sign_image"
+          android:src="@drawable/ic_scan_camera"
+          android:scaleType="center"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent" />
+      </FrameLayout>
 
       <TextView
-        android:id="@+id/tv_sign_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:textColor="#2c2c2c"
-        tools:text="2012-01-12" />
-    </RelativeLayout>
-
-    <RelativeLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:padding="12dp">
+        android:id="@+id/tv_add"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="新增经常检查单"
+        android:textSize="16dp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:background="@drawable/selector_1afa29_r2"
+        android:layout_height="48dp" />
 
       <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="巡查单位"
-        android:textColor="#2c2c2c" />
-
-      <TextView
-        android:id="@+id/tv_sign_company"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:textColor="#2c2c2c"
-        tools:text="京珠北" />
-    </RelativeLayout>
-
-    <RelativeLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:padding="12dp">
-
-      <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="上次签到时间"
-        android:textColor="#2c2c2c" />
-
-      <TextView
-        android:id="@+id/tv_pre_sign_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:textColor="#2c2c2c"
-        tools:text="2012-01-02" />
-    </RelativeLayout>
-
-    <RelativeLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:padding="12dp">
-
-      <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="上次签到人员"
-        android:textColor="#2c2c2c" />
-
-      <TextView
-        android:id="@+id/tv_pre_sign_person"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:textColor="#2c2c2c"
-        tools:text="江东升" />
-    </RelativeLayout>
-
-  </LinearLayout>
-
-  <TextView
-    android:id="@+id/tv_add"
-    android:layout_width="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
-    android:text="新增经常检查单"
-    android:textSize="16dp"
-    android:textColor="@color/white"
-    android:gravity="center"
-    android:background="@drawable/selector_1afa29_r2"
-    android:layout_height="48dp" />
-
-  <TextView
-    android:id="@+id/tv_disease_his"
-    android:layout_width="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
-    android:layout_marginTop="16dp"
-    android:text="结构物养护历史"
-    android:textSize="16dp"
-    android:textColor="@color/white"
-    android:gravity="center"
-    android:background="@drawable/selector_1afa29_r2"
-    android:layout_height="48dp" />
-
+        android:id="@+id/tv_disease_his"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:text="结构物养护历史"
+        android:textSize="16dp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:background="@drawable/selector_1afa29_r2"
+        android:layout_height="48dp" />
+    </LinearLayout>
+  </ScrollView>
 </LinearLayout>

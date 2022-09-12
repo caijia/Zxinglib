@@ -187,7 +187,7 @@ public class DiseaseListActivity extends Activity {
               if (result != null) {
                 List<Disease> data = result.getData();
                 diseaseAdapter.refreshOrLoadMoreItems(page, data);
-                if (page == 1 && data == null || data.isEmpty()) {
+                if (page == 1 && (data == null || data.isEmpty())) {
                   stateView.showView(StateView.STATE_RETRY);
                 } else {
                   stateView.hideAllView(recyclerView);

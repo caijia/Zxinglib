@@ -182,7 +182,7 @@ public class SignResultActivity extends Activity {
       finspId = extras.getString(FINSP_ID);
       latitude = extras.getDouble(LATITUDE);
       longitude = extras.getDouble(LONGITUDE);
-      int visibility = !TextUtils.isEmpty(finspId) ? View.VISIBLE : View.GONE;
+      int visibility = TextUtils.isEmpty(finspId) ? View.VISIBLE : View.GONE;
       tvAdd.setVisibility(visibility);
 
       tvStructName.setText(orEmpty(structName));

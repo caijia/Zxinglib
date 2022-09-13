@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.DrawableRes;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -72,11 +73,18 @@ public class SignResultActivity extends Activity {
   private static final String UPLOAD_FILE_URL = "extra:uploadFileUrl";
   private static final String UPLOAD_DC_CODE = "extra:dccode";
   private static final String ATTENTION_ID = "extra:attentionId";
+  private static final String FINSP_ID = "extra:finsp";
+  private static final String LATITUDE = "extra:latitude";
+  private static final String LONGITUDE = "extra:longitude";
+
+  private String finspId;
+  private double latitude;
+  private double longitude;
 
   public static Intent getIntent(Activity activity, String structName, boolean isSuccessful,
       String signPerson, String signTime, String signCompany, String preSignTime,
       String preSignPerson, String signMessage, String uploadUrl, String uploadDccode,
-      String attentionId) {
+      String attentionId, String finspId, double latitude, double longitude) {
     Intent i = new Intent(activity, SignResultActivity.class);
     i.putExtra(STRUCT_NAME, structName);
     i.putExtra(IS_SUCCESSFUL, isSuccessful);
@@ -89,6 +97,9 @@ public class SignResultActivity extends Activity {
     i.putExtra(UPLOAD_DC_CODE, uploadDccode);
     i.putExtra(UPLOAD_FILE_URL, uploadUrl);
     i.putExtra(ATTENTION_ID, attentionId);
+    i.putExtra(FINSP_ID, finspId);
+    i.putExtra(LATITUDE, latitude);
+    i.putExtra(LONGITUDE, longitude);
     return i;
   }
 
@@ -168,6 +179,11 @@ public class SignResultActivity extends Activity {
       uploadFileUrl = extras.getString(UPLOAD_FILE_URL);
       uploadDccode = extras.getString(UPLOAD_DC_CODE);
       attentionId = extras.getString(ATTENTION_ID);
+      finspId = extras.getString(FINSP_ID);
+      latitude = extras.getDouble(LATITUDE);
+      longitude = extras.getDouble(LONGITUDE);
+      int visibility = !TextUtils.isEmpty(finspId) ? View.VISIBLE : View.GONE;
+      tvAdd.setVisibility(visibility);
 
       tvStructName.setText(orEmpty(structName));
       tvSignPerson.setText(orEmpty(signPerson));
@@ -279,6 +295,9 @@ public class SignResultActivity extends Activity {
     Map<String, Object> params = new HashMap<>();
     params.put("attendanceId", attentionId);
     params.put("fileId", uploadFileId);
+    params.put("finspId", finspId);
+    params.put("latitude", latitude);
+    params.put("longitude", longitude);
     Call<RestResultVo<String>> call = apiService.sendAttendanceImage(url, params);
     if (call != null) {
       new ThreadSwitchHelper<RestResultVo<String>>()

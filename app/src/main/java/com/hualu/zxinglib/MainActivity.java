@@ -29,7 +29,7 @@ public class MainActivity extends Activity {
     Intent i =  SignResultActivity.getIntent(this, "大埠河大桥(K289+678)", true,
             "何炜俊", "2021-12-17", "广东冠粤路桥有限公司",
         "2021-12-02", "何炜俊", "签到成功",
-        "https://125.89.150.12:7001", "1", "b9a09383-ddfd-4e32-84b1-a2399700246d");
+        "https://125.89.150.12:7001", "1", "b9a09383-ddfd-4e32-84b1-a2399700246d", "0bce5220-8e5a-4a83-a52e-23d25c19f8be", 2, 2);
     startActivityForResult(i, 2);
     requestLocationPermissions();
 

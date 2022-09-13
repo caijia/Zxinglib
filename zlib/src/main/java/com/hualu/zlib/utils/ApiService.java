@@ -2,6 +2,7 @@ package com.hualu.zlib.utils;
 
 import com.hualu.zlib.delegate.DiseaseResult;
 import com.hualu.zlib.delegate.RestResult;
+import com.hualu.zlib.response.RestResultVo;
 import java.util.List;
 import java.util.Map;
 import okhttp3.MultipartBody;
@@ -34,5 +35,11 @@ public interface ApiService {
   Call<RestResult> uploadFile(
       @Url String url,
       @Part MultipartBody.Part file
+  );
+
+  @GET
+  Call<RestResultVo<String>> sendAttendanceImage(
+      @Url String url,
+      @QueryMap Map<String, Object> params
   );
 }

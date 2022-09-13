@@ -23,6 +23,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.hualu.zlib.R;
 import com.hualu.zlib.delegate.RestResult;
+import com.hualu.zlib.response.RestResultVo;
 import com.hualu.zlib.utils.ApiService;
 import com.hualu.zlib.utils.HttpClientManager;
 import com.hualu.zlib.utils.ImageCompressor;
@@ -30,6 +31,8 @@ import com.hualu.zlib.utils.ThreadSwitchHelper;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.Callable;
 import okhttp3.MediaType;
@@ -68,10 +71,12 @@ public class SignResultActivity extends Activity {
   private static final String SIGN_MESSAGE = "sign_message";
   private static final String UPLOAD_FILE_URL = "extra:uploadFileUrl";
   private static final String UPLOAD_DC_CODE = "extra:dccode";
+  private static final String ATTENTION_ID = "extra:attentionId";
 
   public static Intent getIntent(Activity activity, String structName, boolean isSuccessful,
       String signPerson, String signTime, String signCompany, String preSignTime,
-      String preSignPerson, String signMessage, String uploadUrl, String uploadDccode) {
+      String preSignPerson, String signMessage, String uploadUrl, String uploadDccode,
+      String attentionId) {
     Intent i = new Intent(activity, SignResultActivity.class);
     i.putExtra(STRUCT_NAME, structName);
     i.putExtra(IS_SUCCESSFUL, isSuccessful);
@@ -83,12 +88,15 @@ public class SignResultActivity extends Activity {
     i.putExtra(SIGN_MESSAGE, signMessage);
     i.putExtra(UPLOAD_DC_CODE, uploadDccode);
     i.putExtra(UPLOAD_FILE_URL, uploadUrl);
+    i.putExtra(ATTENTION_ID, attentionId);
     return i;
   }
 
   private String uploadFileUrl;
 
   private String uploadDccode;
+
+  private String attentionId;
 
   public static final String FILE_ID = "FILE_ID";
 
@@ -159,6 +167,7 @@ public class SignResultActivity extends Activity {
       String signMessage = extras.getString(SIGN_MESSAGE);
       uploadFileUrl = extras.getString(UPLOAD_FILE_URL);
       uploadDccode = extras.getString(UPLOAD_DC_CODE);
+      attentionId = extras.getString(ATTENTION_ID);
 
       tvStructName.setText(orEmpty(structName));
       tvSignPerson.setText(orEmpty(signPerson));
@@ -225,7 +234,7 @@ public class SignResultActivity extends Activity {
     ProgressDialog progressDialog = new ProgressDialog(this);
     progressDialog.show();
     ApiService apiService = HttpClientManager.getInstance().getRetrofit().create(ApiService.class);
-    String url = uploadFileUrl + "?dccode=" + uploadDccode;
+    String url = uploadFileUrl + "/mongo/uploadFile?dccode=" + uploadDccode;
     RequestBody requestBody =
         RequestBody.create(MediaType.parse("application/octet-stream"), file);
     MultipartBody.Part part = null;
@@ -248,8 +257,40 @@ public class SignResultActivity extends Activity {
             @Override public void onSuccess(RestResult result) {
               if (result != null && result.getFileId() != null) {
                 uploadFileId = result.getFileId();
-                Toast.makeText(getApplicationContext(), "上传成功", Toast.LENGTH_LONG).show();
+                setAttentionImage(attentionId, uploadFileId, progressDialog);
+              } else {
+                Toast.makeText(getApplicationContext(), "上传失败", Toast.LENGTH_LONG).show();
+                progressDialog.dismiss();
               }
+            }
+
+            @Override public void onFailure(String error) {
+              progressDialog.dismiss();
+              Toast.makeText(getApplicationContext(), "上传失败", Toast.LENGTH_LONG).show();
+            }
+          });
+    }
+  }
+
+  private void setAttentionImage(String attentionId, String uploadFileId,
+      ProgressDialog progressDialog) {
+    ApiService apiService = HttpClientManager.getInstance().getRetrofit().create(ApiService.class);
+    String url = uploadFileUrl + "/qrcode/attendance/setAttentionImage";
+    Map<String, Object> params = new HashMap<>();
+    params.put("attendanceId", attentionId);
+    params.put("fileId", uploadFileId);
+    Call<RestResultVo<String>> call = apiService.sendAttendanceImage(url, params);
+    if (call != null) {
+      new ThreadSwitchHelper<RestResultVo<String>>()
+          .task(new Callable<RestResultVo<String>>() {
+            @Override public RestResultVo<String> call() throws Exception {
+              return call.execute().body();
+            }
+          })
+          .execute(new ThreadSwitchHelper.Callback<RestResultVo<String>>() {
+            @Override public void onSuccess(RestResultVo<String> result) {
+              String message = result.getStatus() == 200 ? "上传成功" : "上传失败";
+              Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
               progressDialog.dismiss();
             }
 
